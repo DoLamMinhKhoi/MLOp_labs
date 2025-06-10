@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Setup Python Virtual Environment') {
+            steps {
+                script {
+                    // Check if the virtual environment directory exists
+                    if (!fileExists('venv')) {
+                        // Create a virtual environment
+                        sh 'python3 -m venv venv'
+                    }
+                }
+            }
+        }
+
+        stage('Activate Virtual Environment and Install Dependencies') {
+            steps {
+                // Activate the virtual environment and install required libraries
+                sh '''
+                    source venv/bin/activate
+                    pip install -r requirements.txt
+                '''
+            }
+        }
+
+        stage('Run Test Cases') {
+            steps {
+                // Run test cases using pytest
+                sh '''
+                    source venv/bin/activate
+                    pytest tests/
+                '''
+            }
+        }
+
+        stage('Deactivate Virtual Environment') {
+            steps {
+                // Deactivate the virtual environment
+                sh 'deactivate || true'
+            }
+        }
+    }
+
+    post {
+        always {
+            // Clean up virtual environment (optional)
+            echo 'Pipeline execution complete.'
+        }
+    }
+}
