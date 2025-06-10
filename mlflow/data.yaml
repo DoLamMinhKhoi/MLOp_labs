@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 3
+names: ['avocado', 'banana', 'orange']
+
+roboflow:
+  workspace: cv-jaka4
+  project: thuchanhcv_buoi5
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/cv-jaka4/thuchanhcv_buoi5/dataset/1
