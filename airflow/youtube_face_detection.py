@@ -11,7 +11,7 @@ from airflow.hooks.base_hook import BaseHook
 from airflow.models import Variable
 
 # Constants
-YOUTUBE_API_KEY = 'AIzaSyA6pgjQsX-ngOI9Qu1D20spQNskoQvM-xQ'
+YOUTUBE_API_KEY = '...'
 OUTPUT_DIR = '/home/vboxuser/mlop/bai1/output'
 MAX_RESULTS = 20
 
